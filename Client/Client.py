@@ -7,37 +7,42 @@ import requests
 
 def TXThread():
 	while True:
-		MESSAGE = bytes(username + " : "+ input("type: "),encoding='utf8')
+		try:
+			MESSAGE = bytes(username + " : "+ input("type: "),encoding='utf8')
 
-		UDP_IP = "144.202.94.205"
-		UDP_PORT = 28015
+			UDP_IP = "144.202.94.205"
+			UDP_PORT = 28015
 
-		#print("message: %s" % MESSAGE)
+			#print("message: %s" % MESSAGE)
 
-		sock = socket.socket(socket.AF_INET, # Internet
-							socket.SOCK_DGRAM) # UDP
-		sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
+			sock = socket.socket(socket.AF_INET, # Internet
+								socket.SOCK_DGRAM) # UDP
+			sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
+		except:
+			print("cant connect to server, its probubly off")
 
 
 
 def RXThread():
 	a = ""
 	while True:
+		try:
 
-		url = "http://144.202.94.205:8080/text"
+			url = "http://144.202.94.205:8080/text"
 
-		resp = requests.get(url)
+			resp = requests.get(url)
 
-		if (resp.content != a):
-			print("\n\n")
-			print("______________________")
-			#print ("MSG: " + str(MESSAGE))
-			print (resp.content)
-			print("______________________")
-			print("\n\n")
-			a = resp.content
-		time.sleep(1)
-
+			if (resp.content != a):
+				print("\n\n")
+				print("______________________")
+				#print ("MSG: " + str(MESSAGE))
+				print (resp.content)
+				print("______________________")
+				print("\n\n")
+				a = resp.content
+			time.sleep(1)
+		except:
+			print("cant connect to server api, its probubly off")
 
 
 
