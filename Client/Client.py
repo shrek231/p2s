@@ -10,7 +10,8 @@ def TXThread():
 		try:
 			MESSAGE = bytes(username + " : "+ input("type: "),encoding='utf8')
 
-			UDP_IP = "144.202.94.205"
+
+			#UDP_IP = "144.202.94.205"
 			UDP_PORT = 28015
 
 			#print("message: %s" % MESSAGE)
@@ -47,7 +48,7 @@ def RXThread():
 
 
 # try:
-
+UDP_IP = bytes(input("IP (default: 144.202.94.205): "),encoding='utf8')
 username = input("Name : ")
 
 threading.Thread(target=TXThread).start()
@@ -55,27 +56,6 @@ threading.Thread(target=RXThread).start()
 
 # except:
 #    print("Error: unable to start thread")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
