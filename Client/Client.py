@@ -7,13 +7,9 @@ def TXThread():
 	while True:
 		try:
 			MESSAGE = bytes(username + " : "+ input("type: "),encoding='utf8')
-
-
 			#UDP_IP = "144.202.94.205"
 			UDP_PORT = 28015
-
 			#print("message: %s" % MESSAGE)
-
 			sock = socket.socket(socket.AF_INET, # Internet
 								socket.SOCK_DGRAM) # UDP
 			sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
@@ -23,12 +19,9 @@ def RXThread():
 	a = ""
 	while True:
 		#try:
-
 		url = "http://" + (UDP_IP.decode('utf8')) + ":8080/text"
 		#print(url)
-
 		resp = requests.get(url)
-
 		if (resp.content != a):
 			print("\n\n")
 			print("______________________")
