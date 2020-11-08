@@ -45,7 +45,6 @@ def RXThread():
                         title=name,
                         description=z,
                         duration=5,
-                        urgency=Notification.URGENCY_CRITICAL
                         ).send()
             print("\n\n")
             print("______________________")
